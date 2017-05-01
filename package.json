@@ -1,0 +1,16 @@
+{
+  "name": "angular-press",
+  "version": "1.0.0",
+  "devDependencies": {
+    "angular" : "~1.6.4",
+    "angular-route" : "~1.6.4",
+    "bootstrap" : "3"
+  },
+  "description": "Angular WordPress Theme",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ido Barnea",
+  "license": "ISC"
+}
