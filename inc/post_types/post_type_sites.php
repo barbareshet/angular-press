@@ -136,7 +136,14 @@ add_action( 'init', 'custom_taxonomy', 0 );
 
 function register_sites_meta_boxes(){
 
-	add_meta_box( 'site_url', __( 'Site URL', 'ido_ang_wp' ), 'ido_angwp_my_display_callback', 'sites', 'normal', 'high');
+	add_meta_box(
+	            'site_info',
+                __( 'Site Information', 'ido_ang_wp' ),
+                'ido_angwp_my_display_callback',
+                'sites',
+                'normal',
+                'high'
+    );
 }
 
 add_action( 'add_meta_boxes', 'register_sites_meta_boxes' );
@@ -146,16 +153,29 @@ add_action( 'add_meta_boxes', 'register_sites_meta_boxes' );
  *
  * @param WP_Post $post Current post object.
  */
+
+// Display code/markup goes here. Don't forget to include nonces!
 function ido_angwp_my_display_callback( $post ) {
-	// Display code/markup goes here. Don't forget to include nonces!
-}
+    wp_nonce_field(basename( __FILE__),     'wp_sites_nonce');
+    $ido_sites_stored_meta = get_post_meta($post->ID);?>
+        <div class="wrap sites-form">
+            <div class="form-group">
+                <label for="site_url"><?php esc_html_e('Site Url', 'ido_angwp');?></label>
+                <input type="text" name="site_url" id="site_url" value="<?php if( !empty( $ido_sites_stored_meta['site_url'] ) ) echo esc_attr( $ido_sites_stored_meta['site_url'] ) ;?>">
+
+            </div>
+            <!-- /.form-group -->
+        </div>
+        <!-- /.wrap sites-form -->
+
+<?php }
 
 /**
  * Save meta box content.
  *
  * @param int $post_id Post ID
  */
-function wpdocs_save_meta_box( $post_id ) {
+function ido_angwp_save_meta_box( $post_id ) {
 	// Save logic goes here. Don't forget to include nonce checks!
 }
-add_action( 'save_post', 'wpdocs_save_meta_box' );
+add_action( 'save_post', 'ido_angwp_save_meta_box' );
