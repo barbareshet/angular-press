@@ -18,3 +18,5 @@ function angular_press_scripts() {
     );
 }
 add_action( 'wp_enqueue_scripts', 'angular_press_scripts' );
+
+require get_template_directory() . '/inc/post_types/post_type_sites.php';
