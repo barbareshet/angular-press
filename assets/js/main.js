@@ -11,7 +11,7 @@ angular.module('app', ['ngRoute','ngSanitize'])
                 templateUrl: myLocalized.partials + 'main.html',
                 controller: 'Main'
             })
-            .when('/:slug', {
+            .when('/:link', {
                 templateUrl: myLocalized.partials + 'content.html',
                 controller: 'Content'
             });
@@ -26,7 +26,8 @@ angular.module('app', ['ngRoute','ngSanitize'])
         });
     })
     .controller('Content', function($scope, $http, $routeParams) {
-        $http.get('/angwp/wp-json/wp/v2/sites/?filter[name]' + $routeParams.slug).then(function(res){
-            $scope.site = res[0];
+        $http.get('/angwp/wp-json/wp/v2/sites/?filter[name]=' + $routeParams.link).then(function(res){
+            $scope.post = res.data;
+            console.log(res.data);
         });
     });

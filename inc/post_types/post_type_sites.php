@@ -35,7 +35,6 @@ function custom_post_type() {
 		'label'                 => __( 'Sites', 'ido_ang_wp' ),
 		'description'           => __( 'All My Sites', 'ido_ang_wp' ),
 		'labels'                => $labels,
-		'supports'              => array( ),
 		'taxonomies'            => array( 'category', 'post_tag' ),
 		'hierarchical'          => false,
 		'public'                => true,
@@ -50,7 +49,7 @@ function custom_post_type() {
 		'publicly_queryable'    => true,
 		'capability_type'       => 'post',
 		'show_in_rest'          => true,
-		'supports'           => array( 'title', 'thumbnail' )
+		'supports'           => array( 'title', 'thumbnail', 'editor' )
 
 	);
 	register_post_type( 'sites', $args );
@@ -142,7 +141,7 @@ function register_sites_meta_boxes(){
                 'ido_angwp_my_display_callback',
                 'sites',
                 'normal',
-                'high'
+                'low'
     );
 }
 
