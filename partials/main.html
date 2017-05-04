@@ -2,9 +2,9 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-3">
             <ul>
-                <li ng-repeat="post in posts">
-                    <a href="{{post.ID}}">
-                        <h3>{{post.title}}</h3>
+                <li ng-repeat="site in sites">
+                    <a href="{{site.slug}}">
+                        <h3>{{site.title.rendered}}</h3>
                     </a>
                 </li>
             </ul>

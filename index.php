@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html ng-app="app">
 <head>
-    <base href="/">
+<!--    <base href="/">-->
+    <base href="<?php echo site_url();?>/">
     <title>Angular WordPress Tests</title>
     <?php wp_head(); ?>
 </head>
